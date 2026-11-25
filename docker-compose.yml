@@ -1,0 +1,18 @@
+# DB creation in Docker (container, image)
+
+services:
+  postgres:
+    image: postgres:17
+    container_name: a-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: hikeDatabase
+      POSTGRES_USER: secretUsername
+      POSTGRES_PASSWORD: secretPass
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:
